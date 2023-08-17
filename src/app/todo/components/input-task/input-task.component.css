@@ -1,0 +1,14 @@
+.custom-input {
+    width: 700px; /* Ajusta el ancho deseado */
+    height: 500px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  .custom-input:focus {
+    border-color: #3490dc;
+  }
+  
