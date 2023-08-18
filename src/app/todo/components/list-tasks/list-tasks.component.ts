@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
+import { Task } from '../../interfaces/task.interface';
 
 @Component({
   selector: 'list-tasks',
@@ -13,6 +14,13 @@ export class ListTasksComponent {
 
   }
 
-  taskList: string[] = this.todoService.getListTask(); 
+  taskList: Task[] = this.todoService.getListTask(); 
 
+  removeTask(task : string){
+    // this.todoService.removeTask(task);
+  
+  }
+
+
+  
 }

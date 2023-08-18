@@ -5,6 +5,7 @@ import { InputTaskComponent } from './components/input-task/input-task.component
 import { ListTasksComponent } from './components/list-tasks/list-tasks.component';
 import { ButtonAddComponent } from './components/button-add/button-add.component';
 import { MaterialModule } from '../material/material.module';
+import { TaskComponent } from './components/task/task.component';
 
 
 
@@ -14,7 +15,8 @@ import { MaterialModule } from '../material/material.module';
     MainpageComponent,
     InputTaskComponent,
     ButtonAddComponent,
-    ListTasksComponent
+    ListTasksComponent,
+    TaskComponent
   ],
   imports: [
     CommonModule,    

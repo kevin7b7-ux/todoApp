@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Observable } from 'rxjs';
+import { Task } from '../../interfaces/task.interface';
 
 @Component({
   selector: 'input-task',
@@ -15,11 +16,12 @@ export class InputTaskComponent {
   @ViewChild("inputTask") inputTask!: ElementRef;
 
   ngAfterViewInit(): void {    
-    const $value = new Observable<string>(observer => {
-      observer.next(this.inputTask.nativeElement.value);
+    const $task = new Observable<Task>(observer => {
+      let task = {'text': this.inputTask.nativeElement.value, 'checked': false}
+      observer.next(task);
       observer.complete();
     })
-    this.todoService.setInputTask($value);
+    this.todoService.setInputTask($task);
   }
 
 

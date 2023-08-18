@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
+import { tap, pipe, filter } from 'rxjs'
 
 @Component({
   selector: 'button-add',
@@ -15,8 +16,12 @@ export class ButtonAddComponent {
   newTask : string = "";
 
   getValueInput(){
-    this.todoService.getInputTask().subscribe(
-      value => this.todoService.setAddTask(value)
-    );
+    this.todoService.getInputTask()
+    .pipe(
+      filter(value => value.text !== "")
+    )
+    .subscribe(value => { this.todoService.setAddTask(value)});
+    
+  
   }
 }

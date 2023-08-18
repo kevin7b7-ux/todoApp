@@ -4,8 +4,9 @@
         <h2 class="text-center">Task List</h2>
     </mat-list>
 
-    <mat-list-option *ngFor="let task of taskList">
-       {{ task }}
-    </mat-list-option>
+    <div (click)="task.checked = !task.checked" *ngFor="let task of taskList">
+        <task [task]="task.text" [ngClass]="{'line-through': task.checked}"></task>
+    </div>
+
 
   </mat-selection-list>
