@@ -4,7 +4,7 @@
         <h2 class="text-center">Task List</h2>
     </mat-list>
 
-    <div (click)="task.checked = !task.checked" *ngFor="let task of taskList">
+    <div (click)="removeTask(task)" *ngFor="let task of taskList" [ngClass]="task.animationClass">
         <task [task]="task.text" [ngClass]="{'line-through': task.checked}"></task>
     </div>
 

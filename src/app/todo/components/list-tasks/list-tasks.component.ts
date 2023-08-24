@@ -16,9 +16,12 @@ export class ListTasksComponent {
 
   taskList: Task[] = this.todoService.getListTask(); 
 
-  removeTask(task : string){
-    // this.todoService.removeTask(task);
-  
+  removeTask(task : Task){
+    task.checked = !task.checked;
+    task.animationClass = "fade-out";
+    setTimeout(() => {
+      this.todoService.removeTask(task);
+    }, 300);
   }
 
 

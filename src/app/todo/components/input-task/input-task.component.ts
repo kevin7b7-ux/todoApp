@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { Observable } from 'rxjs';
 import { Task } from '../../interfaces/task.interface';
+import { tap, pipe, filter, Observable } from 'rxjs'
 
 @Component({
   selector: 'input-task',
@@ -10,19 +10,25 @@ import { Task } from '../../interfaces/task.interface';
 })
 export class InputTaskComponent {
 
-  constructor(private todoService : TodoService){
+  constructor(private todoService: TodoService) {
 
   }
   @ViewChild("inputTask") inputTask!: ElementRef;
 
-  ngAfterViewInit(): void {    
+  ngAfterViewInit(): void {
     const $task = new Observable<Task>(observer => {
-      let task = {'text': this.inputTask.nativeElement.value, 'checked': false}
+      let task = { 'text': this.inputTask.nativeElement.value, 'checked': false }
       observer.next(task);
       observer.complete();
     })
     this.todoService.setInputTask($task);
   }
 
-
+  getValueInput() {
+    this.todoService.getInputTask()
+      .pipe(
+        filter(value => value.text !== "")
+      )
+      .subscribe(value => { this.todoService.setAddTask(value) });
+  }
 }

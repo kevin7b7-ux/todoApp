@@ -1,4 +1,5 @@
 export interface Task{
     'text' : string,
-    'checked': boolean
+    'checked': boolean,
+    'animationClass'?: string
 }
